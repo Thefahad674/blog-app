@@ -5,6 +5,7 @@ import "./News.css";
 import userImg from "../assets/images/user.jpg";
 import axios from "axios";
 import noImg from '../assets/images/no-image.jpg.png'
+import NewsModal from "./NewsModal";
 
 const categories = ["general", "world", "business", "technology", "entertainment", "sports", "science", "health", "nation"]
 
@@ -14,10 +15,17 @@ const News = () => {
   const[slectedCategory, setSelectedCategory] = useState('general')
   const [searchInput, setSearchInput] = useState('')
   const [searchQuery, setSearchQuery] = useState('')
+  const [showModal, setShowModal] = useState(false)
+  const [selectedArticle, setSelectedArticle] = useState(null)
 
   useEffect(() => {
     const fetchNews = async () => {
-      let url = `https://gnews.io/api/v4/top-headlines?category=${slectedCategory}&lang=en&apikey=59a16a7c6b078b9c55aa876cca859e59`;
+      let url = `https://gnews.io/api/v4/top-headlines?category=${slectedCategory}&lang=en&apikey=59a16a7c6b078b9c55aa876cca859e59`
+
+
+      if(searchQuery) {
+          url = `https://gnews.io/api/v4/search?q=${searchQuery}&lang=eng&apikey=59a16a7c6b078b9c55aa876cca859e59`
+      }
 
       const response = await axios.get(url);
       const fetchedNews = response.data.articles;
@@ -35,12 +43,24 @@ const News = () => {
     };
 
     fetchNews();
-  }, [slectedCategory]);
+  }, [slectedCategory, searchQuery]);
 
 
   const handleCategoryClick = (e, category) => {
     e.preventDefault();
     setSelectedCategory(category)
+  }
+
+ 
+  const handleSearch = (e) => {
+     e.preventDefault()
+     setSearchQuery(searchInput)
+     setSearchInput('')
+  }
+
+  const handleArticleClick = (article) => {
+    setSelectedArticle(article)
+    setShowModal(true)
   }
 
   return (
@@ -49,9 +69,9 @@ const News = () => {
         <header className="news-header">
           <h1 className="logo">News & Blogs</h1>
           <div className="search-bar">
-            <form>
+            <form onSubmit={handleSearch}>
               <input type="text" placeholder="Search News..." />
-              <button type="submit">
+              <button type="submit" value={searchInput} onChange={(e)=> setSearchInput(e.target.value)}>
                 <i className="fa-solid fa-magnifying-glass"></i>
               </button>
             </form>
@@ -82,7 +102,7 @@ const News = () => {
           </div>
           <div className="news-section">
             {headline && (
-              <div className="headline">
+              <div className="headline" onClick={() =>handleArticleClick(headline)}>
                 <img src={headline.image || noImg} alt={headline.title} />
                 <h2 className="headline-title">
                   {headline.title}
@@ -92,7 +112,7 @@ const News = () => {
             )}
             <div className="news-grid">
               {news.map((article, index) => (
-                <div key={index} className="news-grid-item">
+                <div key={index} className="news-grid-item"  onClick={() => handleArticleClick(article)}>
                   <img src={article.image || noImg} alt={article.title} />
                   <h3>
                     {article.title}
@@ -102,6 +122,7 @@ const News = () => {
               ))}
             </div>
           </div>
+          <NewsModal show={showModal} article={selectedArticle} onClose={() => setShowModal(false) } />
           <div className="my-blogs">My Blogs</div>
           <div className="weather-calendar">
             <Weather />
@@ -113,5 +134,5 @@ const News = () => {
     </>
   );
 };
-
+ 
 export default News;
