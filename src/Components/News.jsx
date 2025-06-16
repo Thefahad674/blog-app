@@ -42,8 +42,12 @@ const News = () => {
       setHeadline(fetchedNews[0]);
       setNews(fetchedNews.slice(1, 7));
 
-      console.log(fetchedNews[0]);
-    };
+     const savedBookmarks = JSON.parse(localStorage.getItem("bookmarks")) || []
+     setBookmarks(savedBookmarks)
+
+
+     console.log(news);
+    }
 
     fetchNews();
   }, [slectedCategory, searchQuery]);
@@ -69,6 +73,7 @@ const News = () => {
   const handleBookmarkClick = (article) => {
      setBookmarks((prevBookmarks) => {
       const updatedBookmarks = prevBookmarks.find((bookmark) => bookmark.title === article.title) ? prevBookmarks.filter((bookmark) => bookmark.title !== article.title) : [...prevBookmarks, article]
+      localStorage.setItem("bookmarks", JSON.stringify(updatedBookmarks))
       return updatedBookmarks
      })
   }
@@ -116,7 +121,7 @@ const News = () => {
                 <img src={headline.image || noImg} alt={headline.title} />
                 <h2 className="headline-title">
                   {headline.title}
-                  <i className={`${bookmarks.some((bookmark) => bookmark.title === article.title) ? 'fa-solid' : 'fa-regular'
+                  <i className={`${bookmarks.some((bookmark) => bookmark.title === headline.title) ? 'fa-solid' : 'fa-regular'
                   } fa-bookmark bookmark`}
                   onClick={(e) => {
                     e.stopPropagation()
@@ -150,7 +155,7 @@ const News = () => {
             bookmarks={bookmarks}
             onClose={() => setShowBookmakrsModal(false)}
             onSelectArticle={handleArticleClick}
-            onDeleteButton={handleBookmarkClick}
+            onDeleteBookmark={handleBookmarkClick}
             />
           <div className="my-blogs">My Blogs</div>
           <div className="weather-calendar">
