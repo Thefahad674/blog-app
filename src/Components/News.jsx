@@ -168,7 +168,7 @@ const News = () => {
             <span>News & Blogs App </span>
           </p>
           <p>
-            &copy; All RIght Reserved. By Code & Create
+            &copy; All RIght Reserved By Fahad
           </p>
         </footer>
       </div>
