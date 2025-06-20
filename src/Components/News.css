@@ -217,7 +217,7 @@
 
 .news-grid-item img {
   width: 100%;
-  height: 100%;
+  height: 70%;
   display: block;
   object-fit: cover;
   border-radius: 1rem;
@@ -236,6 +236,7 @@
   background-color: rgba(0, 0, 0, 0.7);
   width: 100%;
   border-radius: 0 0 1rem 1rem;
+  margin-bottom: 42px;
 } 
 
 .my-blogs {
@@ -250,4 +251,26 @@
   display: flex;
   flex-direction: column;
   row-gap: 2rem;
+}
+
+.news-footer {
+  width: 100%;
+  min-height: 5rem;
+  background-color: #111214;
+  border-radius: 0 0 1rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 4rem;
+}
+
+.news-footer p {
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: #bbb;
+}
+
+.news-footer p span {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 2rem;
 }
