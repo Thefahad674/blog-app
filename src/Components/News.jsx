@@ -4,7 +4,7 @@ import Calendar from "./Calendar";
 import "./News.css";
 import userImg from "../assets/images/user.jpg";
 import axios from "axios";
-import noImg from "../assets/images/no-image.jpg.png";
+import noImg from "../assets/images/no-image.png";
 import NewsModal from "./NewsModal";
 import Bookmarks from "./Bookmarks";
  
