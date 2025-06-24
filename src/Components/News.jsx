@@ -21,7 +21,7 @@ const categories = [
   "nation",
 ];
 
-const News = ({ onShowBlogs, blogs }) => {
+const News = ({ onShowBlogs, blogs, onEditBlog, onDeleteBlog }) => {
   const [headline, setHeadline] = useState();
   const [news, setNews] = useState([]);
   const [slectedCategory, setSelectedCategory] = useState("general");
@@ -225,10 +225,14 @@ const News = ({ onShowBlogs, blogs }) => {
                   <h3>{blog.title}</h3>
                   {/* <p>{blog.content}</p> */}
                   <div className="post-buttons">
-                    <button className="edit-post">
-                      <i className="bx bxs-edit"></i>
+                    <button className="edit-post"  onClick={() => onEditBlog(blog)
+                    }>
+                      <i className="bx bxs-edit" ></i>
                     </button>
-                    <button className="delete-post">
+                    <button className="delete-post" onClick={(e) => {
+                      e.stopPropagation()
+                      onDeleteBlog(blog)
+                    }}>
                       <i className="bx bxs-x-circle"></i>
                     </button>
                   </div>
