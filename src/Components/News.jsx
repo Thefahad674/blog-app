@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Weather from "./Weather";
 import Calendar from "./Calendar";
 import "./News.css";
-import userImg from "../assets/images/user.jpg";
+import userImg from "../assets/images/user-img.png";
 import axios from "axios";
 import noImg from "../assets/images/no-image.png";
 import NewsModal from "./NewsModal";
@@ -124,7 +124,7 @@ const News = ({ onShowBlogs, blogs, onEditBlog, onDeleteBlog }) => {
           <div className="navbar">
             <div className="user" onClick={onShowBlogs}>
               <img src={userImg} alt="User Image" />
-              <p>Mary's Blog</p>
+              <p>Fahad's Blog</p>
             </div>
             <nav className="categories">
               <h1 className="nav-heading">Categories</h1>

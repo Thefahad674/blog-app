@@ -16,9 +16,11 @@ html {
 .container {
     width: 100%;
     height: 100vh;
-    background: linear-gradient(to right, #b88efc, #6877f4);
+    background: linear-gradient(to right, #ff4e00, #ec9f05, #00c9ff, #92fe9d);
     display: grid;
     place-items: center;
+      background-size: 300% 300%;
+  animation: move 10s ease infinite;
 }
 
 .news-blogs-app {
@@ -28,6 +30,18 @@ html {
     box-shadow: 0 2rem 3rem rgb(0, 0, 0, 0.5);
     border-radius: 1rem;
      
+}
+
+@keyframes move {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 @media(max-width: 1400px) {
