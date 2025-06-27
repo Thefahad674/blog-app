@@ -126,7 +126,7 @@ const News = ({ onShowBlogs, blogs, onEditBlog, onDeleteBlog }) => {
             <div className="user" onClick={onShowBlogs}>
               <div className="user-img-wrapper">
                 <img src={userImg} alt="User" />
-                <span className="plus-icon">+</span>
+                <i className="fa-solid fa-circle-plus plus-icon"></i>
               </div>
               <p>Fahad's Blog</p>
             </div>
