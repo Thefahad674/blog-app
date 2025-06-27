@@ -246,7 +246,7 @@
     }
 
     .submission-message{
-        margin-left: 100px;
+        margin-left: 50px;
         align-items: center;
     }
 
@@ -263,7 +263,7 @@
     }
 
      .submission-message{
-        margin-left: 100px;
+        margin-left: 50px;
         align-items: center;
     }
 }
@@ -286,7 +286,7 @@
         row-gap: 2rem;
     }
      .submission-message{
-        margin-left: 100px;
+        margin-left: 50px;
         align-items: center;
     }
 }
