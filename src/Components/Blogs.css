@@ -256,3 +256,22 @@
         width: 30rem;
     }
 }
+
+@media(max-width: 400px) {
+     .blogs-left img{
+      top: 10%;
+    }
+
+    .blogs-close-btn {
+        top: 6rem;
+        right: 3rem;
+    }
+
+    .text-input {
+        aspect-ratio: 5 / 2;
+    }
+
+    .blogs-right-form.visible {
+        row-gap: 2rem;
+    }
+}
