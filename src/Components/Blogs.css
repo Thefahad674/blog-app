@@ -244,6 +244,12 @@
     .text-input {
         width: 40rem;
     }
+
+    .submission-message{
+        margin-left: 100px;
+        align-items: center;
+    }
+
 }
 
 @media(max-width: 500px) {
@@ -254,6 +260,11 @@
     .title-input,
     .text-input {
         width: 30rem;
+    }
+
+     .submission-message{
+        margin-left: 100px;
+        align-items: center;
     }
 }
 
@@ -273,5 +284,9 @@
 
     .blogs-right-form.visible {
         row-gap: 2rem;
+    }
+     .submission-message{
+        margin-left: 100px;
+        align-items: center;
     }
 }
