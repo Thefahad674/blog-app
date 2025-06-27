@@ -111,6 +111,36 @@
   color: #ddd;
 }
 
+.user-img-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.user-img-wrapper img {
+  width: 50px; /* or whatever size you're using */
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.plus-icon {
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  background-color: #00c9ff;
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  font-weight: 400;
+  border: 2px solid white;
+}
+
+
 .categories {
   width: 100%;
   height: calc(80% - 10px);
@@ -147,6 +177,18 @@
 .nav-link i {
   font-size: 2rem;
   margin-left: 1rem;
+}
+
+.nav-link.active {
+  font-weight: bold;
+  color: #fff;
+  background-color: #4a4aef;
+  border-radius: 8px;
+  padding: 5px 10px;
+  transition: 0.3s ease;
+  background: linear-gradient(to right, #ff4e00, #ec9f05, #00c9ff, #92fe9d);
+  background-size: 300% 300%;
+  animation: move 10s ease infinite;
 }
 
 .news-section {
@@ -483,11 +525,11 @@
 
   .user {
     width: 100%;
-    min-height: 40%;
+    min-height: 45%;
   }
 
   .user p {
-    display: none;
+     display: none;
   }
 
   .categories {
@@ -506,11 +548,23 @@
   .weather-calendar {
     flex-direction: column;
   }
-  
+
   .news-footer {
     min-height: 8rem;
     flex-direction: column;
     justify-content: center;
     row-gap: 1rem;
+  }
+}
+
+@keyframes move {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }

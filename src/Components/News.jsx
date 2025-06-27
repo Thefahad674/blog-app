@@ -8,6 +8,7 @@ import noImg from "../assets/images/no-image.png";
 import NewsModal from "./NewsModal";
 import Bookmarks from "./Bookmarks";
 import BlogsModal from "./BlogsModal";
+import { NavLink } from "react-router-dom";
 
 const categories = [
   "general",
@@ -39,7 +40,7 @@ const News = ({ onShowBlogs, blogs, onEditBlog, onDeleteBlog }) => {
       let url = `https://gnews.io/api/v4/top-headlines?category=${slectedCategory}&lang=en&apikey=59a16a7c6b078b9c55aa876cca859e59`;
 
       if (searchQuery) {
-        url = `https://gnews.io/api/v4/search?q=${searchQuery}&lang=eng&apikey=59a16a7c6b078b9c55aa876cca859e59`;
+        url = `https://gnews.io/api/v4/search?q=${searchQuery}&lang=en&apikey=59a16a7c6b078b9c55aa876cca859e59`;
       }
 
       const response = await axios.get(url);
@@ -93,14 +94,14 @@ const News = ({ onShowBlogs, blogs, onEditBlog, onDeleteBlog }) => {
   };
 
   const handleBlogClick = (blog) => {
-    setSelectedPost(blog)
-    setShowBlogsModal(true)
-  }
+    setSelectedPost(blog);
+    setShowBlogsModal(true);
+  };
 
   const closeBlogModal = () => {
-    setShowBlogsModal(false)
-    setSelectedPost(null)
-  }
+    setShowBlogsModal(false);
+    setSelectedPost(null);
+  };
 
   return (
     <>
@@ -123,9 +124,13 @@ const News = ({ onShowBlogs, blogs, onEditBlog, onDeleteBlog }) => {
         <div className="news-content">
           <div className="navbar">
             <div className="user" onClick={onShowBlogs}>
-              <img src={userImg} alt="User Image" />
+              <div className="user-img-wrapper">
+                <img src={userImg} alt="User" />
+                <span className="plus-icon">+</span>
+              </div>
               <p>Fahad's Blog</p>
             </div>
+
             <nav className="categories">
               <h1 className="nav-heading">Categories</h1>
               <div className="nav-links">
@@ -133,7 +138,9 @@ const News = ({ onShowBlogs, blogs, onEditBlog, onDeleteBlog }) => {
                   <a
                     key={category}
                     href="#"
-                    className="nav-link"
+                    className={`nav-link ${
+                      slectedCategory === category ? "active" : ""
+                    }`}
                     onClick={(e) => handleCategoryClick(e, category)}
                   >
                     {category}
@@ -220,19 +227,28 @@ const News = ({ onShowBlogs, blogs, onEditBlog, onDeleteBlog }) => {
             <h1 className="my-blogs-heading">My Blogs</h1>
             <div className="blog-posts">
               {blogs.map((blog, index) => (
-                <div key={index} className="blog-post" onClick={() => handleBlogClick(blog)}>
+                <div
+                  key={index}
+                  className="blog-post"
+                  onClick={() => handleBlogClick(blog)}
+                >
                   <img src={blog.image || noImg} alt={blog.title} />
                   <h3>{blog.title}</h3>
                   {/* <p>{blog.content}</p> */}
                   <div className="post-buttons">
-                    <button className="edit-post"  onClick={() => onEditBlog(blog)
-                    }>
-                      <i className="bx bxs-edit" ></i>
+                    <button
+                      className="edit-post"
+                      onClick={() => onEditBlog(blog)}
+                    >
+                      <i className="bx bxs-edit"></i>
                     </button>
-                    <button className="delete-post" onClick={(e) => {
-                      e.stopPropagation()
-                      onDeleteBlog(blog)
-                    }}>
+                    <button
+                      className="delete-post"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        onDeleteBlog(blog);
+                      }}
+                    >
                       <i className="bx bxs-x-circle"></i>
                     </button>
                   </div>
@@ -240,7 +256,11 @@ const News = ({ onShowBlogs, blogs, onEditBlog, onDeleteBlog }) => {
               ))}
             </div>
             {selectedPost && showBlogModal && (
-            <BlogsModal show = {showBlogModal} blog= {selectedPost} onClose={closeBlogModal} />
+              <BlogsModal
+                show={showBlogModal}
+                blog={selectedPost}
+                onClose={closeBlogModal}
+              />
             )}
           </div>
           <div className="weather-calendar">
