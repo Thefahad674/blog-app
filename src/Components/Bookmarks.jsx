@@ -1,6 +1,5 @@
 import React from 'react'
 import './Modal.css'
-import demoImg from '../assets/images/demo.jpg'
 import './Bookmarks.css'
 
 const Bookmarks = ({show, bookmarks, onClose, onSelectArticle, onDeleteBookmark }) => {
