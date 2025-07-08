@@ -1,7 +1,7 @@
 import React from "react";
 import './BlogsModal.css'
 
-const BlogsModal = ({show, blog, onClose}) => {
+const BlogsModal = ({show, blog, onClose})=> {
   if(!show){
     return null
   }
