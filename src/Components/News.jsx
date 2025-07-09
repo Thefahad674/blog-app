@@ -8,7 +8,6 @@ import noImg from "../assets/images/no-image.png";
 import NewsModal from "./NewsModal";
 import Bookmarks from "./Bookmarks";
 import BlogsModal from "./BlogsModal";
-import { NavLink } from "react-router-dom";
 
 const categories = [
   "general",
