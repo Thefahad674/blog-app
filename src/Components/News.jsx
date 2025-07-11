@@ -107,6 +107,7 @@ const News = ({ onShowBlogs, blogs, onEditBlog, onDeleteBlog }) => {
       <div className="news">
         <header className="news-header">
           <h1 className="logo">News & Blogs</h1>
+          
           <div className="search-bar">
             <form onSubmit={handleSearch}>
               <input type="text" placeholder="Search News..." />
